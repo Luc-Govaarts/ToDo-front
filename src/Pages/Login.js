@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Login() {
-    return (
-        <div>
-            <p>"this is the login Page!!"</p>
-        </div>
-    )
+	const [username, setUsername] = useState('')
+	const [password, set_password] = useState('')
+
+	return (
+		<div>
+			<div>
+				<p>this is the login Page!!</p>
+			</div>
+            <div>
+                <form>
+                    <p>
+                        Login form
+                    </p>
+                </form>
+            </div>
+		</div>
+	)
 }
