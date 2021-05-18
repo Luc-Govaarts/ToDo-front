@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+	Link,
 	Box,
 	Button,
 	Container,
@@ -51,12 +52,7 @@ export default function SignUp() {
 	function submitForm(event) {
 		event.preventDefault()
 
-		dispatch(signUp(
-		    name,
-		    email,
-		    password,
-		    code
-		));
+		dispatch(signUp(name, email, password, code))
 
 		set_email('')
 		set_password('')
@@ -138,6 +134,9 @@ export default function SignUp() {
 						<Typography component='p' variant='caption'>
 							Code alleen beschikbaar via L.Govaarts
 						</Typography>
+						<Link href='/login' variant='body2'>
+							{'Al een account? log dan hier in'}
+						</Link>
 					</form>
 				</div>
 			</Container>
