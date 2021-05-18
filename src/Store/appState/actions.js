@@ -1,4 +1,4 @@
-import { DEFAULT_MESSAGE_TIMEOUT } from '../../config/constants'
+import { DEFAULT_MESSAGE_TIMEOUT } from '../../Config/constants'
 
 export const APP_LOADING = 'APP_LOADING'
 export const APP_DONE_LOADING = 'APP_DONE_LOADING'
