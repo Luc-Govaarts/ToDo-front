@@ -10,6 +10,10 @@ import {
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { makeStyles } from '@material-ui/core/styles'
+import { login } from '../store/user/actions'
+import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectToken } from '../store/user/selectors'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -35,11 +39,18 @@ export default function Login() {
 	const classes = useStyles()
 	const [email, set_email] = useState('')
 	const [password, set_password] = useState('')
+	const token = useSelector(selectToken)
+	const history = useHistory()
+	const dispatch = useDispatch()
+
+	if (token) {
+		history.push('/')
+	}
 
 	function submitForm(event) {
 		event.preventDefault()
 
-		// dispatch(login(email, password))
+		dispatch(login(email, password))
 
 		set_email('')
 		set_password('')
