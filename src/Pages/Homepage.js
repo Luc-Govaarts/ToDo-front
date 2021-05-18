@@ -7,7 +7,7 @@ export default function Login() {
     const token = useSelector(selectToken)
 	const history = useHistory()
     console.log("token: ", token)
-    
+
     if (!token) {
 		history.push('/login')
 	}
