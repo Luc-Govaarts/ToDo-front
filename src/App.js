@@ -6,6 +6,8 @@ import Homepage from './Pages/Homepage'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import AppBar from './Components/Navigation/AppBar'
+import SnackBar from './Components/Snackbar'
+
 function App() {
 	const dispatch = useDispatch()
 
@@ -16,6 +18,7 @@ function App() {
 	return (
 		<div className='App'>
 			<AppBar />
+			<SnackBar />
 			<Switch>
 				<Route path='/login' component={Login} />
 				<Route path='/signup' component={Signup} />
