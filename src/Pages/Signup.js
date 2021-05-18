@@ -131,9 +131,6 @@ export default function SignUp() {
 							className={classes.submit}>
 							Schrijf je in
 						</Button>
-						<Typography component='p' variant='caption'>
-							Code alleen beschikbaar via L.Govaarts
-						</Typography>
 						<Link href='/login' variant='body2'>
 							{'Al een account? log dan hier in'}
 						</Link>
