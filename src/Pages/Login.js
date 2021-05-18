@@ -10,10 +10,10 @@ import {
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { makeStyles } from '@material-ui/core/styles'
-import { login } from '../store/user/actions'
+import { login } from '../Store/user/actions'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectToken } from '../store/user/selectors'
+import { selectToken } from '../Store/user/selectors'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
