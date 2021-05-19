@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Box, IconButton } from '@material-ui/core'
+import { AppBar, Toolbar, Box } from '@material-ui/core'
 import { selectToken } from '../../Store/user/selectors'
 import { useSelector } from 'react-redux'
 import LoggedIn from './LoggedIn'

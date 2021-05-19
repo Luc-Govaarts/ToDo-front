@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectMessage } from '../Store/appstate/selectors'
+import { selectMessage } from '../Store/appState/selectors'
 import Snackbar from '@material-ui/core/Snackbar';
 import { Button } from '@material-ui/core'
-import { clearMessage } from '../Store/appstate/actions';
+import { clearMessage } from '../Store/appState/actions';
 import { Alert } from '@material-ui/lab';
 
 export default function SnackBar() {
