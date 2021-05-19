@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { selectUser } from '../Store/user/selectors'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { verify } from '../Store/user/actions'
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
 	const classes = useStyles()
-	const [code, set_code] = useState(0)
+	const [code, set_code] = useState('')
     const user = useSelector(selectUser)
 	const history = useHistory()
 	const dispatch = useDispatch()
@@ -50,7 +51,7 @@ export default function SignUp() {
 	function submitForm(event) {
 		event.preventDefault()
 
-        // dispatch(verifyMail(code, user.id))
+        dispatch(verify(code, user.id))
 
 		set_code('')
 	}

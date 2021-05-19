@@ -1,9 +1,16 @@
-import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from './actions'
+import {
+	LOG_OUT,
+	LOGIN_SUCCESS,
+	TOKEN_STILL_VALID,
+	VERIFY_SUCCESS
+} from './actions'
 
 const initialState = {
-	token: localStorage.getItem("token"),
+	token: localStorage.getItem('token'),
 	name: null,
 	email: null,
+	id: null,
+	verified: null,
 }
 
 export default (state = initialState, action) => {
@@ -19,6 +26,8 @@ export default (state = initialState, action) => {
 		case TOKEN_STILL_VALID:
 			return { ...state, ...action.payload }
 
+		case VERIFY_SUCCESS: 
+			return { ...state, verified: true}
 		default:
 			return state
 	}
