@@ -56,8 +56,7 @@ export const signUp = (name, email, password, code) => {
 }
 
 export const login = (email, password) => {
-	return async (dispatch, getState) => {
-		console.log('Email & Pass : ', email, password)
+	return async (dispatch) => {
 		dispatch(appLoading())
 		try {
 			const response = await axios.post(`${apiUrl}/login`, {
@@ -77,6 +76,19 @@ export const login = (email, password) => {
 				dispatch(setMessage('danger', true, error.message))
 			}
 			dispatch(appDoneLoading())
+		}
+	}
+}
+
+export const verify = (code, id) => { 
+	return async (dispatch) => {
+		dispatch(appLoading())
+
+		try {
+			const response = await axios.patch(`${apiUrl}/verify`, { code, id })
+			
+		} catch (error) {
+
 		}
 	}
 }

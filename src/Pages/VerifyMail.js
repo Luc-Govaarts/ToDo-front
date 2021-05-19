@@ -50,7 +50,7 @@ export default function SignUp() {
 	function submitForm(event) {
 		event.preventDefault()
 
-        // dispatch(verifyMail(code))
+        // dispatch(verifyMail(code, user.id))
 
 		set_code('')
 	}
