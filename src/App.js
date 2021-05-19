@@ -7,6 +7,7 @@ import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import AppBar from './Components/Navigation/AppBar'
 import SnackBar from './Components/Snackbar'
+import VerifyMail from './Pages/VerifyMail'
 
 function App() {
 	const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function App() {
 			<AppBar />
 			<SnackBar />
 			<Switch>
+				<Route path='/verify' component={VerifyMail} />
 				<Route path='/login' component={Login} />
 				<Route path='/signup' component={Signup} />
 				<Route path='/' component={Homepage} />
