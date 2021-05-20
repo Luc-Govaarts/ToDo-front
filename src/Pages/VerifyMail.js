@@ -114,7 +114,7 @@ export default function SignUp() {
 								<Box>
 									<Typography component='p' variant='body2'>
 										Can't find the email? Or is the code not working? Click the
-										button below to send new mail. Retries left: {verifyCounter}
+										button below to send a new mail. Retries left: {verifyCounter}
 									</Typography>
 									<Button
 										onClick={sendNewCode}
