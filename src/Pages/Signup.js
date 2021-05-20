@@ -68,7 +68,7 @@ export default function SignUp() {
 						<LockOutlinedIcon />
 					</Avatar>
 					<Typography component='h1' variant='h5'>
-						Schrijf je in
+						Sign up
 					</Typography>
 					<form className={classes.form} noValidate>
 						<TextField
@@ -79,7 +79,7 @@ export default function SignUp() {
 							required
 							fullWidth
 							id='name'
-							label='Naam'
+							label='Name'
 							name='name'
 							autoComplete='Name'
 							autoFocus
@@ -105,7 +105,7 @@ export default function SignUp() {
 							required
 							fullWidth
 							name='password'
-							label='Wachtwoord'
+							label='Password'
 							type='password'
 							id='password'
 							autoComplete='current-password'
@@ -129,10 +129,10 @@ export default function SignUp() {
 							variant='contained'
 							color='primary'
 							className={classes.submit}>
-							Schrijf je in
+							Sign up now
 						</Button>
 						<Link href='/login' variant='body2'>
-							{'Al een account? log dan hier in'}
+							{'Already have an account? Log in here!'}
 						</Link>
 					</form>
 				</div>

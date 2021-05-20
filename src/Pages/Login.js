@@ -88,7 +88,7 @@ export default function Login() {
 							required
 							fullWidth
 							name='password'
-							label='Wachtwoord'
+							label='password'
 							type='password'
 							id='password'
 							autoComplete='current-password'
@@ -103,7 +103,7 @@ export default function Login() {
 							Log in
 						</Button>
 						<Link href='/signup' variant='body2'>
-							{'Nog geen account? Schrijf je in'}
+							{'No account yet? Sign up here!'}
 						</Link>
 					</form>
 				</div>
