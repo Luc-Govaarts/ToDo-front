@@ -36,24 +36,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
 	const classes = useStyles()
-	const [code, set_code] = useState('')
-    const user = useSelector(selectUser)
+	const [code, setCode] = useState('')
+	const [verifyCounter, setVerifyCounter] = useState(3)
+	const user = useSelector(selectUser)
 	const history = useHistory()
 	const dispatch = useDispatch()
 
 	if (user.token && user.verified) {
 		history.push('/')
-    } 
-    if (!user.token) {
-        history.push('/login')
-    }
+	}
+	if (!user.token) {
+		history.push('/login')
+	}
 
 	function submitForm(event) {
 		event.preventDefault()
 
-        dispatch(verify(code, user.id))
+		dispatch(verify(code, user.id))
 
-		set_code('')
+		setCode('')
+	}
+
+	function sendNewCode(event) {
+		event.preventDefault()
+		if (verifyCounter > 0) {
+			setVerifyCounter(verifyCounter - 1)
+		} else {
+			// dispatch(notValidated(user.id))
+		}
+		// dispatch(newCode(user.id))
 	}
 
 	return (
@@ -66,29 +77,58 @@ export default function SignUp() {
 					<Typography component='h1' variant='h5'>
 						Verify your credentials
 					</Typography>
-					<form className={classes.form} noValidate>
-						<TextField
-							value={code}
-							onChange={(event) => set_code(event.target.value)}
-							variant='outlined'
-							margin='normal'
-							required
-							fullWidth
-							name='code'
-							label='Verification Code'
-							type='password'
-							id='code'
-						/>
-						<Button
-							onClick={submitForm}
-							type='submit'
-							fullWidth
-							variant='contained'
-							color='primary'
-							className={classes.submit}>
-							Submit
-						</Button>
-					</form>
+					<Box mt={3}>
+						<Typography component='p' variant='body1'>
+							An email with a verification code was send to your inbox. Please
+							enter the code below to verify your email address.
+						</Typography>
+						<form className={classes.form} noValidate>
+							<TextField
+								value={code}
+								onChange={(event) => setCode(event.target.value)}
+								variant='outlined'
+								margin='normal'
+								required
+								fullWidth
+								name='code'
+								label='Verification Code'
+								type='password'
+								id='code'
+							/>
+							<Button
+								onClick={submitForm}
+								type='submit'
+								fullWidth
+								variant='contained'
+								color='primary'
+								className={classes.submit}>
+								Submit
+							</Button>
+							{verifyCounter === 0 ? (
+								<Typography component='p' variant='body2'>
+									The last new code was send to your email. Use this code to
+									verify your account. If the account is not verified it will be
+									deleted in three days.
+								</Typography>
+							) : (
+								<Box>
+									<Typography component='p' variant='body2'>
+										Can't find the email? Or is the code not working? Click the
+										button below to send new mail. Retries left: {verifyCounter}
+									</Typography>
+									<Button
+										onClick={sendNewCode}
+										type='button'
+										fullWidth
+										variant='contained'
+										color='alternative'
+										className={classes.submit}>
+										Send new verification Code
+									</Button>
+								</Box>
+							)}
+						</form>
+					</Box>
 				</div>
 			</Container>
 		</Box>

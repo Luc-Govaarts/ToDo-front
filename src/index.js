@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from '@material-ui/core'
 import { createMuiTheme } from '@material-ui/core/styles'
-import { lightGreen, lightBlue } from '@material-ui/core/colors'
+import { lightGreen, lightBlue, teal } from '@material-ui/core/colors'
 import store from './Store'
 
 const theme = createMuiTheme({
@@ -19,6 +19,7 @@ const theme = createMuiTheme({
 		secondary: {
 			main: lightBlue[400],
 		},
+		alternative: teal[400],
 	},
 })
 
