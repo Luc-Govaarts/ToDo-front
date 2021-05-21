@@ -23,7 +23,7 @@ const loginSuccess = (userWithToken) => {
 
 const verifySuccess = () => ({ type: VERIFY_SUCCESS })
 
-const newCodeSend = (user) => ({ type: NEW_CODE_SEND, payload: user})
+const newCodeSend = (user) => ({ type: NEW_CODE_SEND, payload: user })
 
 const tokenStillValid = (userWithoutToken) => {
 	return {
@@ -51,10 +51,10 @@ export const signUp = (name, email, password, code) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
@@ -76,10 +76,10 @@ export const login = (email, password) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
@@ -106,10 +106,10 @@ export const verify = (code, id) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
@@ -121,7 +121,7 @@ export const newCode = (id, retriesLeft) => {
 		dispatch(appLoading())
 
 		try {
-			const response = await axios.patch(`${apiUrl}/sendnewcode`, {
+			const response = await axios.patch(`${apiUrl}/sendNewCode`, {
 				id,
 				retriesLeft,
 			})
@@ -139,10 +139,10 @@ export const newCode = (id, retriesLeft) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}

@@ -61,6 +61,7 @@ export default function SignUp() {
 		event.preventDefault()
 		setVerifyCounter(verifyCounter - 1)
 		dispatch(newCode(user.id, verifyCounter))
+
 	}
 
 	return (
@@ -117,7 +118,7 @@ export default function SignUp() {
 										type='button'
 										fullWidth
 										variant='contained'
-										color='alternative'
+										color='secondary'
 										className={classes.submit}>
 										Send new verification Code
 									</Button>
