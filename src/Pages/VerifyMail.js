@@ -110,7 +110,7 @@ export default function SignUp() {
 								<Box>
 									<Typography component='p' variant='body2'>
 										Can't find the email? Or is the code not working? Click the
-										button below to send a new mail. Retries left: {verifyCounter}
+										button below to send a new mail.
 									</Typography>
 									<Button
 										onClick={sendNewCode}
@@ -121,6 +121,9 @@ export default function SignUp() {
 										className={classes.submit}>
 										Send new verification Code
 									</Button>
+									<Typography component='p' variant='body2'>
+										Retries left: {verifyCounter}
+									</Typography>
 								</Box>
 							)}
 						</form>
