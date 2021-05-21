@@ -12,6 +12,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const TOKEN_STILL_VALID = 'TOKEN_STILL_VALID'
 export const LOG_OUT = 'LOG_OUT'
 export const VERIFY_SUCCESS = 'VERIFY_SUCCES'
+export const NEW_CODE_SEND = 'NEW_CODE_SEND'
 
 const loginSuccess = (userWithToken) => {
 	return {
@@ -21,6 +22,8 @@ const loginSuccess = (userWithToken) => {
 }
 
 const verifySuccess = () => ({ type: VERIFY_SUCCESS })
+
+const newCodeSend = (user) => ({ type: NEW_CODE_SEND, payload: user })
 
 const tokenStillValid = (userWithoutToken) => {
 	return {
@@ -48,10 +51,10 @@ export const signUp = (name, email, password, code) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
@@ -73,10 +76,10 @@ export const login = (email, password) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
@@ -91,7 +94,8 @@ export const verify = (code, id) => {
 			await axios.patch(`${apiUrl}/verify`, { code, id })
 
 			dispatch(verifySuccess())
-			dispatch(showMessageWithTimeout(
+			dispatch(
+				showMessageWithTimeout(
 					'success',
 					false,
 					'Your account is now verified!',
@@ -102,10 +106,43 @@ export const verify = (code, id) => {
 		} catch (error) {
 			if (error.response) {
 				console.log(error.response.data.message)
-				dispatch(setMessage('danger', true, error.response.data.message))
+				dispatch(setMessage('warning', true, error.response.data.message))
 			} else {
 				console.log(error.message)
-				dispatch(setMessage('danger', true, error.message))
+				dispatch(setMessage('warning', true, error.message))
+			}
+			dispatch(appDoneLoading())
+		}
+	}
+}
+
+export const newCode = (id, retriesLeft) => {
+	return async (dispatch) => {
+		dispatch(appLoading())
+
+		try {
+			const response = await axios.patch(`${apiUrl}/sendNewCode`, {
+				id,
+				retriesLeft,
+			})
+
+			dispatch(newCodeSend(response.data.user))
+			dispatch(
+				showMessageWithTimeout(
+					'success',
+					false,
+					response.data.message,
+					1500
+				)
+			)
+			dispatch(appDoneLoading())
+		} catch (error) {
+			if (error.response) {
+				console.log(error.response.data.message)
+				dispatch(setMessage('warning', true, error.response.data.message))
+			} else {
+				console.log(error.message)
+				dispatch(setMessage('warning', true, error.message))
 			}
 			dispatch(appDoneLoading())
 		}
