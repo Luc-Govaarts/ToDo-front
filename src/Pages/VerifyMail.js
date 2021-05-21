@@ -40,7 +40,7 @@ export default function SignUp() {
 	const [code, setCode] = useState('')
 	const history = useHistory()
 	const dispatch = useDispatch()
-	
+
 	if (user.token && user.verified) {
 		history.push('/')
 	}
@@ -103,7 +103,7 @@ export default function SignUp() {
 								<Typography component='p' variant='body2'>
 									The last new code was send to your email. Use this code to
 									verify your account. If the account is not verified it will be
-									deleted in three days.
+									deleted in 24 hours.
 								</Typography>
 							) : (
 								<Box>
