@@ -36,9 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
 	const classes = useStyles()
-	const [code, setCode] = useState('')
-	const [verifyCounter, setVerifyCounter] = useState(3)
 	const user = useSelector(selectUser)
+	const [code, setCode] = useState('')
+	const [verifyCounter, setVerifyCounter] = useState(user.retriesLeft)
 	const history = useHistory()
 	const dispatch = useDispatch()
 
@@ -59,9 +59,10 @@ export default function SignUp() {
 
 	function sendNewCode(event) {
 		event.preventDefault()
-		setVerifyCounter(verifyCounter - 1)
-		dispatch(newCode(user.id, verifyCounter))
 
+		setVerifyCounter(verifyCounter - 1)
+
+		dispatch(newCode(user.id, verifyCounter))
 	}
 
 	return (

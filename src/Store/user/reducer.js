@@ -2,7 +2,8 @@ import {
 	LOG_OUT,
 	LOGIN_SUCCESS,
 	TOKEN_STILL_VALID,
-	VERIFY_SUCCESS
+	VERIFY_SUCCESS,
+	NEW_CODE_SEND
 } from './actions'
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
 	email: null,
 	id: null,
 	verified: null,
+	retriesLeft: null
 }
 
 export default (state = initialState, action) => {
@@ -27,7 +29,10 @@ export default (state = initialState, action) => {
 			return { ...state, ...action.payload }
 
 		case VERIFY_SUCCESS: 
-			return { ...state, verified: true}
+			return { ...state, verified: true }
+		
+		case NEW_CODE_SEND:
+			return { ...state, ...action.payload }
 		default:
 			return state
 	}

@@ -126,12 +126,12 @@ export const newCode = (id, retriesLeft) => {
 				retriesLeft,
 			})
 
-			dispatch(newCodeSend(response))
+			dispatch(newCodeSend(response.data.user))
 			dispatch(
 				showMessageWithTimeout(
 					'success',
 					false,
-					'A new verification code was send to your inbox',
+					response.data.message,
 					1500
 				)
 			)
