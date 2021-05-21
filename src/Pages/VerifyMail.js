@@ -38,10 +38,9 @@ export default function SignUp() {
 	const classes = useStyles()
 	const user = useSelector(selectUser)
 	const [code, setCode] = useState('')
-	const [verifyCounter, setVerifyCounter] = useState(user.retriesLeft)
 	const history = useHistory()
 	const dispatch = useDispatch()
-
+	
 	if (user.token && user.verified) {
 		history.push('/')
 	}
@@ -60,9 +59,7 @@ export default function SignUp() {
 	function sendNewCode(event) {
 		event.preventDefault()
 
-		setVerifyCounter(verifyCounter - 1)
-
-		dispatch(newCode(user.id, verifyCounter))
+		dispatch(newCode(user.id, user.retriesLeft - 1))
 	}
 
 	return (
@@ -102,7 +99,7 @@ export default function SignUp() {
 								className={classes.submit}>
 								Submit
 							</Button>
-							{verifyCounter === 0 ? (
+							{user.retriesLeft === 0 ? (
 								<Typography component='p' variant='body2'>
 									The last new code was send to your email. Use this code to
 									verify your account. If the account is not verified it will be
@@ -124,7 +121,7 @@ export default function SignUp() {
 										Send new verification Code
 									</Button>
 									<Typography component='p' variant='body2'>
-										Retries left: {verifyCounter}
+										Retries left: {user.retriesLeft}
 									</Typography>
 								</Box>
 							)}
